@@ -1,0 +1,33 @@
+{% extends "pos/base.html" %}
+
+{% block title %}
+<title>Dashboard - POS System</title>
+{% endblock %}
+
+{% block content %}
+    {% for s in store %}
+        <h3 class="text-center">{{ s.store_name | capfirst}}'s - Dashboard</h3>
+        {% empty %}
+            <h3 class="text-center">Tealoy - Dashboard</h3>
+    {% endfor %}
+  <div class="card-deck">
+    <div class="card">
+      <div class="card-header">
+        <h5>Billing</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Clicking on the button below will lead you to the billing section.</p>
+        <a href="{% url 'billing' %}" class="btn btn-primary">Start Billing</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <h5>Product Inventory</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text">Clicking on the button below will lead you to the inventory section.</p>
+        <a href="/admin/" class="btn btn-primary">Manage Inventory</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

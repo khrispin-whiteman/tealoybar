@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'pos/css/styles.css' %}"/>
+    <link href="{% static 'pos/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'pos/vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+
+    {% block title %}<title>TeaLoy Bar</title>{% endblock %}
+</head>
+
+
+<body>
+{% block navbar %}
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" href="{% url 'dashboard' %}">TeaLoy Bar</a>
+        <li class="dropdown">
+            <b href="#" class="dropdown-toggle" data-toggle="dropdown">
+                {{ user.username | capfirst }} <span class="fa fa-user"></span>
+            </b>
+            <ul class="dropdown-menu" role="menu">
+
+                <li>
+                    <a href="{% url 'logout' %}">
+                        <span class="fa fa-sign-out"></span> Sign Out
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+    </nav>
+{% endblock %}
+<div class="container-fluid">
+    {% block content %} {% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+{% block javascript %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'pos/base.html' %}
+{% load staticfiles %}
+
+{% block navbar %}{% endblock %}
+
+{% block content %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href="{% static 'pos/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'pos/css/main1.css' %}" rel="stylesheet">
+    <link href="{% static 'pos/css/util.css' %}" rel="stylesheet">
+    <link href="{% static 'pos/css/util1.css' %}" rel="stylesheet">
+
+    <body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form method="post" action="." class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+                {% csrf_token %}
+                    {% for s in store %}
+                        <span class="login100-form-title">
+                            <strong>{{ s.store_name | capfirst}} - Bar</strong><br>
+                            {% if s.store_logo %}
+                                <img src="{{ s.store_logo.url }}" height="90px" width="160px"><br>
+					        {% endif %}
+                        </span>
+                    {% endfor %}
+
+                        <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+                            <input class="input100" type="text" name="username" placeholder="Username">
+                            <span class="focus-input100"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Please enter password">
+                            <input class="input100" type="password" name="password" placeholder="Password">
+                            <span class="focus-input100"></span>
+                        </div>
+                        <br>
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                Log in
+                            </button>
+                        </div>
+                        <br>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    </body>
+{% endblock %}
